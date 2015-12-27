@@ -123,8 +123,10 @@ if (exists("data.merged")) {
   names(data.merged)[1:2] = c("Subject","Activity")
 
   # Clean up some temp variables and data
-  rm(list=ls()[grepl("test",ls())]) # all the *test* data and variables
-  rm(list=ls()[grepl("train",ls())]) # all the *train* data and variables
+  if (clear.variables) {
+    rm(list=ls()[grepl("test",ls())]) # all the *test* data and variables
+    rm(list=ls()[grepl("train",ls())]) # all the *train* data and variables
+  }
 }
 
 message("Merged Data ready for processing")
@@ -137,12 +139,14 @@ data.merged.avg<-data.merged %>%
 newcolnames<-sapply(names(data.merged.avg),function(x) paste0("mean.",x))
 names(data.merged.avg)[3:ncol(data.merged.avg)]<-newcolnames[3:ncol(data.merged.avg)]
 
+message("Write output file")
 write.table(data.merged.avg,file="tidy_data.txt",row.names=FALSE)
-
 
 # Clean up unnecessary variables and files
 if (clear.variables) {
-  #unlink("data", recursive = TRUE, force=TRUE)
+  unlink("data", recursive = TRUE, force=TRUE)
   unlink(file.data.zip)
   rm(list=ls()[ls()!="data.merged" & ls()!="data.merged.avg"])
 }
+
+message("Processing complete!")
