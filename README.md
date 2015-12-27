@@ -23,7 +23,7 @@ Data file consisted of 2 sets of data (named Test and Train), which were to be m
 5. Use rbind to combine TEST and TRAIN datasets into a single dataset
 6. Use dplyr to create new data frame grouped by Subject and Activity, determine mean for each measurement
 7. Use sapply and names() to rename variables with "mean-" prefaced
-8. Write out tidy data file using write.table()
+8. Write out tidy data file using write.table()  
 8a. To load file: `read.table("tidy_data.txt",header=TRUE)`
 
 ### Files supporting this project:
