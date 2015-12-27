@@ -134,14 +134,15 @@ data.merged.avg<-data.merged %>%
   summarise_each(funs(mean))
 
 # rename the variables
-newcolnames<-sapply(names(data.merged.avg),function(x) paste0("mean(",x,")"))
+newcolnames<-sapply(names(data.merged.avg),function(x) paste0("mean.",x))
 names(data.merged.avg)[3:ncol(data.merged.avg)]<-newcolnames[3:ncol(data.merged.avg)]
 
+write.table(data.merged.avg,file="tidy_data.txt",row.names=FALSE)
 
 
 # Clean up unnecessary variables and files
 if (clear.variables) {
-  unlink("data", recursive = TRUE, force=TRUE)
+  #unlink("data", recursive = TRUE, force=TRUE)
   unlink(file.data.zip)
   rm(list=ls()[ls()!="data.merged" & ls()!="data.merged.avg"])
 }
