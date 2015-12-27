@@ -16,13 +16,13 @@ Data file consisted of 2 sets of data (named Test and Train), which were to be m
 2. Copy data zip file to current working directory and unzip files (only if files are not already in directory)  
 3. Read in all data files  
 4. For each sub-dataset (TEST, TRAIN):  
-+ Build subset of data with only variables that contain "-mean()" or "-std()"  
-+ Use names() to rename columns to match variable names as described in features.txt
-+ Build matrix with human-friendly activity label specified, based on activity ID in original data file
-+ Use cbind to create new data frame with original data, subject and human-friendly activity label
+> Build subset of data with only variables that contain "-mean()" or "-std()"  
+> Use names() to rename columns to match variable names as described in features.txt
+> Build matrix with human-friendly activity label specified, based on activity ID in original data file
+> Use cbind to create new data frame with original data, subject and human-friendly activity label
 5. Use rbind to combine TEST and TRAIN datasets into a single dataset
 6. Use dplyr to create new data frame grouped by Subject and Activity, determine mean for each measurement
 7. Use sapply and names() to rename variables with "mean-" prefaced
 8. Write out tidy data file using write.table()
-+ To load file: `read.table("tidy_data.txt",header=TRUE)`
+> To load file: `read.table("tidy_data.txt",header=TRUE)`
 
